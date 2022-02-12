@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar';
 import Homepage from "./Homepage";
 import Land from "./Land.js";
 import Coins from "./Coins";
+import NewsSection from './Components/NewsSection'
 import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core';
 import Particles from "react-tsparticles";
 
@@ -118,6 +119,7 @@ import Particles from "react-tsparticles";
         <Route exact path="/" element={<Land/>} />
         <Route exact path="/home" element={<><Navbar/><Homepage/></>} />
         <Route exact path="/coins/:id" element={<><Navbar/><Coins/></>} />
+        <Route exact path="/articles" element={<><Navbar/><NewsSection/></>}/>
         </Routes>
     </BrowserRouter>
     </div>
