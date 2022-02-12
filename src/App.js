@@ -2,6 +2,7 @@ import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Homepage from "./Homepage";
+import Land from "./Land.js";
 import Coins from "./Coins";
 import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core';
 import Particles from "react-tsparticles";
@@ -31,9 +32,11 @@ import Particles from "react-tsparticles";
     },
   });
   return (
+  <>
+    
     <ThemeProvider theme={darkTheme}>
     <div className={classes.App}>
-     <Particles 
+      <Particles 
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
@@ -43,13 +46,13 @@ import Particles from "react-tsparticles";
           events: {
             onClick: {
               enable: true,
-              mode: "repulse"
+              mode: "repulse",
             },
             onHover: {
               enable: true,
               mode: "grab",
             },
-            // resize: true,
+           // resize: true,
           },
           modes: {
             bubble: {
@@ -109,16 +112,17 @@ import Particles from "react-tsparticles";
         },
         detectRetina: true,
       }}
-    />
+    /> 
     <BrowserRouter>
-        <Navbar/>
         <Routes>
-        <Route exact path="/" element={<Homepage/>} />
-        <Route exact path="/coins/:id" element={<Coins/>} />
+        <Route exact path="/" element={<Land/>} />
+        <Route exact path="/home" element={<><Navbar/><Homepage/></>} />
+        <Route exact path="/coins/:id" element={<><Navbar/><Coins/></>} />
         </Routes>
     </BrowserRouter>
     </div>
     </ThemeProvider>
+    </>
   );
 }
 export default App;
