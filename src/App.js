@@ -122,6 +122,7 @@ import Particles from "react-tsparticles";
         <Route exact path="/home" element={<Homepage/>} />
         <Route exact path="/coins/:id" element={<Coins/>} />
         <Route exact path="/articles" element={<NewsSection/>}/>
+        <Route exact path="/demo" element={<NewsSection/>}/>
         </Routes>
     </BrowserRouter>
     </div>

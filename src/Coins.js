@@ -1,11 +1,11 @@
 import { makeStyles } from '@material-ui/styles';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams,Link} from 'react-router-dom';
 import { SingleCoin } from './Api/Api';
 import CoinInfo from './Components/CoinInfo';
 import { CurrencyState } from './CurrContext';
-import { LinearProgress, Typography} from "@material-ui/core";
+import { Button, LinearProgress, Typography} from "@material-ui/core";
 import ReactHtmlParser from "react-html-parser";
 import { numComa } from './Components/LandingPage/Carousel';
 
@@ -20,8 +20,7 @@ const Coins = () => {
   };
  
   useEffect(()=>{
-    fetchCoin();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchCoin()
   },[currency]);
 
   const useStyles=makeStyles((theme)=>({
@@ -81,7 +80,10 @@ const Coins = () => {
       <span style={{display:"flex"}}><Typography variant="h5" className={classes.heading}>Market Cap:</Typography>&nbsp;&nbsp; 
       <Typography variant="h5">{symbol+" "}{numComa(coin?.market_data.market_cap[currency.toLowerCase()].toString().slice(0,-6))+" "}M</Typography>
       </span>
-        
+        <div style={{display:"flex",justifyContent:"space-between"}}>
+          <Button variant="outlined">Demo</Button>
+          <Button variant="outlined">Invest</Button>
+        </div>
       </div>
     </div>
     <CoinInfo coin={coin}/>

@@ -4,10 +4,7 @@ import Drawer from "@material-ui/core/Drawer";
 import { Avatar, Button } from "@material-ui/core";
 import { CurrencyState } from "../../CurrContext";
 import { signOut } from "firebase/auth";
-import { auth, db } from "../../firebase";
-import { numComa } from "../LandingPage/Carousel";
-import { AiFillDelete } from "react-icons/ai";
-import { doc, setDoc } from "firebase/firestore";
+import { auth } from "../../firebase";
 
 const useStyles = makeStyles({
   container: {
@@ -51,7 +48,7 @@ export default function UserSidebar() {
   const [state, setState] = React.useState({
     right: false,
   });
-  const { user, setAlert, watchlist, coins, symbol } = CurrencyState();
+  const { user, setAlert, watchlist } = CurrencyState();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -75,28 +72,7 @@ export default function UserSidebar() {
     toggleDrawer();
   };
 
-  const removeFromWatchlist = async (coin) => {
-    const coinRef = doc(db, "watchlist", user.uid);
-    try {
-      await setDoc(
-        coinRef,
-        { coins: watchlist.filter((wish) => wish !== coin?.id) },
-        { merge: true }
-      );
-
-      setAlert({
-        open: true,
-        message: `${coin.name} Removed from the Watchlist !`,
-        type: "success",
-      });
-    } catch (error) {
-      setAlert({
-        open: true,
-        message: error.message,
-        type: "error",
-      });
-    }
-  };
+ 
 
   return (
     <div>
