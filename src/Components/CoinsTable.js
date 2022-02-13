@@ -43,7 +43,6 @@ const CoinsTable = () => {
     setLoading(false);
   };
   
-  console.log(coins);
   useEffect(()=>{
       fetchCoins();
        //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -122,7 +121,7 @@ const CoinsTable = () => {
       }
     </TableContainer>
     <Pagination
-      count={(handleSearch()?.length/rows).toFixed(0)}
+      count={(handleSearch()?.length/rows)}
       style={{
         display:"flex",
         justifyContent:"center",
